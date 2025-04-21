@@ -3,17 +3,18 @@ import React, { useState } from "react";
 function ControlledField() {
 
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handlePasswordOnChange = e => {
       console.log(e.target.value);
       setPassword(e.target.value);
 
-      // if (password.length < 6) {
-      //     setError('Password must be 6 characters or longer.')
-      // }
-      // else{
-      //     setError('');
-      // }
+      if (password.length < 6) {
+          setError('Password must be 6 characters or longer.')
+      }
+      else{
+          setError('');
+      }
   }
 
   return (
@@ -37,6 +38,7 @@ function ControlledField() {
         <br />
         <input type="submit" value="Submit" />
       </form>
+      <p style={{color: 'red'}}><small>{error}</small></p>
     </div>
   );
 }
